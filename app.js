@@ -34,3 +34,17 @@ add.addEventListener('click', () => {
     document.getElementById('author').value = '';
   }
 });
+
+document.getElementById("book-list").addEventListener("click", function (e) {
+  console.log(e.target);
+
+  if (e.target.classList.contains("delete")) {
+    e.target.parentElement.remove();
+  }
+  awesomeBooks.forEach((book, i) => {
+    if (e.target.parentElement.firstElementChild.textContent === book.Title) {
+      awesomeBooks.splice(i, 1);
+    }
+  });
+  localStorage.setItem("books", JSON.stringify(awesomeBooks));
+});

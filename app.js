@@ -1,8 +1,8 @@
-const add = document.getElementById("add");
+const add = document.getElementById('add');
 const awesomeBooks = [];
-add.addEventListener("click", () => {
-  const title = document.getElementById("title");
-  const author = document.getElementById("author");
+add.addEventListener('click', () => {
+  const title = document.getElementById('title');
+  const author = document.getElementById('author');
 
   const book = {
     Title: title.value,
@@ -11,16 +11,13 @@ add.addEventListener("click", () => {
 
   awesomeBooks.push(book);
 
-  localStorage.setItem("books", JSON.stringify(awesomeBooks));
+  localStorage.setItem('books', JSON.stringify(awesomeBooks));
 
-  if (title === "" || author === "") {
-    console.log("cvyb");
-  } else {
-    const list = document.getElementById("book-list");
+  const list = document.getElementById('book-list');
 
-    const newDiv = document.createElement("div");
+  const newDiv = document.createElement('div');
 
-    newDiv.innerHTML += `
+  newDiv.innerHTML += `
       <p>${book.Title}</p>
       <p>${book.Author}</p>
       <button class="delete">Delete</button>
@@ -28,17 +25,14 @@ add.addEventListener("click", () => {
       
       `;
 
-    list.appendChild(newDiv);
+  list.appendChild(newDiv);
 
-    document.getElementById("title").value = "";
-    document.getElementById("author").value = "";
-  }
+  document.getElementById('title').value = '';
+  document.getElementById('author').value = '';
 });
 
-document.getElementById("book-list").addEventListener("click", function (e) {
-  console.log(e.target);
-
-  if (e.target.classList.contains("delete")) {
+document.getElementById('book-list').addEventListener('click', (e) => {
+  if (e.target.classList.contains('delete')) {
     e.target.parentElement.remove();
   }
   awesomeBooks.forEach((book, i) => {
@@ -46,5 +40,5 @@ document.getElementById("book-list").addEventListener("click", function (e) {
       awesomeBooks.splice(i, 1);
     }
   });
-  localStorage.setItem("books", JSON.stringify(awesomeBooks));
+  localStorage.setItem('books', JSON.stringify(awesomeBooks));
 });
